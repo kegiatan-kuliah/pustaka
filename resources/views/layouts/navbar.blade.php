@@ -28,7 +28,7 @@
         Lokasi
       </a>
       <a class="dropdown-item" href="{{ route('book.index') }}" rel="noopener">
-        Katalok
+        Katalog
       </a>
     </div>
   </li>

@@ -33,6 +33,7 @@
                 <th>Judul</th>
                 <th>Kategori</th>
                 <th>Jumlah</th>
+                <th>Jumlah Yang Di Pinjam</th>
                 <th>Harga</th>
                 <th></th>
               </thead>

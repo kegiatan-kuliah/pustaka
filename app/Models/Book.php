@@ -9,6 +9,6 @@ class Book extends Model
     protected $table = 'books';
 
     protected $fillable = [
-        'title','condition','quantity','price','total_pages','synopsis','cover','book_category_id','author_id','publisher_id','book_location_id'
+        'title','condition','quantity','borrow_quantity','price','total_pages','synopsis','cover','book_category_id','author_id','publisher_id','book_location_id'
     ];
 }
