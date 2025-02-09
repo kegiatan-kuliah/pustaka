@@ -39,7 +39,7 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="{{ route('user.index') }}">
-      <span class="nav-link-title">Pengguna</span>
+      <span class="nav-link-title">Guru</span>
     </a>
   </li>
 </ul>

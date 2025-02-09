@@ -51,6 +51,11 @@ Route::controller(BookLocationController::class)->prefix('book-location')->name(
 
 Route::controller(UserController::class)->prefix('user')->name('user.')->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/new', 'new')->name('new');
+    Route::get('/{id}', 'edit')->name('edit');
+    Route::post('/', 'store')->name('store');
+    Route::put('/', 'update')->name('update');
+    Route::get('/destroy/{id}', 'destroy')->name('destroy');
 });
 
 Route::controller(BookController::class)->prefix('book')->name('book.')->group(function () {
