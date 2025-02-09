@@ -1,6 +1,6 @@
 <ul class="navbar-nav">
   <li class="nav-item">
-    <a class="nav-link" href="./">
+    <a class="nav-link" href="{{ route('dashboard.index') }}">
       <span class="nav-link-title">Beranda</span>
     </a>
   </li>
