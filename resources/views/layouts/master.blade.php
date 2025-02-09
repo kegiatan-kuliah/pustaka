@@ -13,6 +13,7 @@
     <link href="{{ asset('css/tabler-vendors.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/tabler-marketing.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/demo.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet" />
 
     <style>
       @import url('https://rsms.me/inter/inter.css');
@@ -63,7 +64,37 @@
         </div>
       </header>
       <div class="page-wrapper">
-        @yield('content')
+        @yield('header')
+        <div class="page-body">
+          <div class="container-xl">
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            @endif
+            @if (session('danger'))
+              <div class="alert alert-danger">
+                  {{ session('danger') }}
+              </div>
+            @endif
+            @if (session('danger-with-link'))
+              <div class="alert alert-danger">
+                  {!! session('danger-with-link') !!}
+              </div>
+            @endif
+            @if (session('success'))
+              <div class="alert alert-success">
+                {{ session('success') }}
+              </div>
+            @endif
+            @yield('content')
+          </div>
+        </div>
+        
         
         <footer class="footer footer-transparent d-print-none">
           <div class="container-xl">
@@ -86,5 +117,7 @@
     <!-- Tabler Core -->
     <script src="{{ asset('js/tabler.min.js') }}" defer></script>
     <script src="{{ asset('js/demo.min.js') }}" defer></script>
+    <script src="{{ asset('js/datatables.min.js') }}"></script>
+    @stack('scripts')
   </body>
 </html>
