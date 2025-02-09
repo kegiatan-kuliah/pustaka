@@ -14,6 +14,7 @@
     <link href="{{ asset('css/tabler-marketing.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/demo.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css" rel="stylesheet" />
 
     <style>
       @import url('https://rsms.me/inter/inter.css');
@@ -118,6 +119,7 @@
     <script src="{{ asset('js/tabler.min.js') }}" defer></script>
     <script src="{{ asset('js/demo.min.js') }}" defer></script>
     <script src="{{ asset('js/datatables.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
     @stack('scripts')
   </body>
 </html>

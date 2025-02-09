@@ -8,6 +8,8 @@ use App\Http\Controllers\BookLocationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\BorrowController;
+use App\Http\Controllers\ReturnController;
 
 Route::get('/', function () {
     return view('layouts.master');
@@ -75,4 +77,20 @@ Route::controller(MemberController::class)->prefix('member')->name('member.')->g
     Route::post('/', 'store')->name('store');
     Route::put('/', 'update')->name('update');
     Route::get('/destroy/{id}', 'destroy')->name('destroy');
+});
+
+Route::controller(BorrowController::class)->prefix('borrow')->name('borrow.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/new', 'new')->name('new');
+    Route::get('/{id}', 'edit')->name('edit');
+    Route::post('/', 'store')->name('store');
+    Route::put('/', 'update')->name('update');
+});
+
+Route::controller(ReturnController::class)->prefix('return')->name('return.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/new', 'new')->name('new');
+    Route::get('/{id}', 'edit')->name('edit');
+    Route::post('/', 'store')->name('store');
+    Route::put('/', 'update')->name('update');
 });
