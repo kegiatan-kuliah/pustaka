@@ -9,6 +9,11 @@ class Member extends Model
     protected $table = 'members';
 
     protected $fillable = [
-        'name','identity_no','member_no','gender','phone_no','address','photo'
+        'name','identity_no','member_no','gender','phone_no','address','photo','user_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

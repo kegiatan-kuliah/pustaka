@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Validator;
 use App\DataTables\UsersDataTable;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -35,7 +36,13 @@ class UserController extends Controller
 
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|min:3|unique:users,email',
+            'email' => [
+                'required',
+                'min:3',
+                Rule::unique('users', 'email')->where(function ($query) use ($request) {
+                    return $query->where('role', 'teacher');
+                }),
+            ],
             'name' => 'required|min:3',
         ]);
 
@@ -57,7 +64,13 @@ class UserController extends Controller
 
     public function update(Request $request) {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|min:3|unique:users,email,'.$request->id,
+            'email' => [
+                'required',
+                'min:3',
+                Rule::unique('users', 'email')->where(function ($query) use ($request) {
+                    return $query->where('role', 'teacher');
+                })->ignore($request->id),
+            ],
             'name' => 'required|min:3',
         ]);
 
