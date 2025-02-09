@@ -60,6 +60,12 @@ Route::controller(UserController::class)->prefix('user')->name('user.')->group(f
 
 Route::controller(BookController::class)->prefix('book')->name('book.')->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/new', 'new')->name('new');
+    Route::get('/{id}', 'edit')->name('edit');
+    Route::get('/detail/{id}', 'detail')->name('detail');
+    Route::post('/', 'store')->name('store');
+    Route::post('/update', 'update')->name('update');
+    Route::get('/destroy/{id}', 'destroy')->name('destroy');
 });
 
 Route::controller(MemberController::class)->prefix('member')->name('member.')->group(function () {
