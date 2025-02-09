@@ -33,6 +33,11 @@ Route::controller(PublisherController::class)->prefix('publisher')->name('publis
 
 Route::controller(BookCategoryController::class)->prefix('book-category')->name('book_category.')->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/new', 'new')->name('new');
+    Route::get('/{id}', 'edit')->name('edit');
+    Route::post('/', 'store')->name('store');
+    Route::put('/', 'update')->name('update');
+    Route::get('/destroy/{id}', 'destroy')->name('destroy');
 });
 
 Route::controller(BookLocationController::class)->prefix('book-location')->name('book_location.')->group(function () {
