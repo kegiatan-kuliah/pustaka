@@ -32,7 +32,7 @@
 					</div>
 					<div class="card-footer">
 						<div class="d-flex justify-content-between">
-							<a href="{{ route('author.index') }}" class="btn btn-default">Kembali</a>
+							<a href="{{ route('book_category.index') }}" class="btn btn-default">Kembali</a>
 							{{ html()->button('Simpan')->class('btn btn-primary')->attribute('type', 'submit') }}
 						</div>
 					</div>
