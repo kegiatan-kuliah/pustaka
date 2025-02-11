@@ -88,8 +88,6 @@ class MembersDataTable extends DataTable
             Column::make('identity_no')->label('Identity No'),
             Column::make('member_no')->label('Member No'),
             Column::make('gender'),
-            Column::make('phone_no')->label('No HP'),
-            Column::make('address')->label('Address'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

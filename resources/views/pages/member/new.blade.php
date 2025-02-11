@@ -29,16 +29,10 @@
 								->attribute('placeholder', 'Isikan email anggota') }}
 						</div>
             <div class="mb-3">
-							{{ html()->label('No Anggota', 'member_no')->class('form-label') }}
-							{{ html()->input('text', 'member_no')
-								->class('form-control')->attribute('required', true)
-								->attribute('placeholder', 'Isikan no anggota') }}
-						</div>
-            <div class="mb-3">
-							{{ html()->label('No Identitas Anggota', 'identity_no')->class('form-label') }}
+							{{ html()->label('NISN', 'identity_no')->class('form-label') }}
 							{{ html()->input('text', 'identity_no')
 								->class('form-control')->attribute('required', true)
-								->attribute('placeholder', 'Isikan no identitas anggota') }}
+								->attribute('placeholder', 'Isikan nisn') }}
 						</div>
             <div class="mb-3">
 							{{ html()->label('Jenis Kelamin Anggota', 'gender')->class('form-label') }}
@@ -46,22 +40,16 @@
                   ->class('form-control')
                   ->attribute('required', true) }}
 						</div>
-            <div class="mb-3">
-							{{ html()->label('No HP Anggota', 'phone_no')->class('form-label') }}
-							{{ html()->input('text', 'phone_no')
-								->class('form-control')->attribute('required', true)
-								->attribute('placeholder', 'Isikan no hp anggota') }}
-						</div>
-            <div class="mb-3">
-							{{ html()->label('Alamat Anggota', 'address')->class('form-label') }}
-							{{ html()->input('textarea', 'address')
-								->class('form-control')->attribute('required', true)
-								->attribute('placeholder', 'Isikan alamat anggota') }}
+						<div class="mb-3">
+							{{ html()->label('Kelas', 'room_id')->class('form-label') }}
+							{{ html()->select('room_id', ['' => 'Pilih Kelas'] + $rooms->toArray())
+                  ->class('form-control')
+                  ->attribute('required', true) }}
 						</div>
 					</div>
 					<div class="card-footer">
 						<div class="d-flex justify-content-between">
-							<a href="{{ route('user.index') }}" class="btn btn-default">Kembali</a>
+							<a href="{{ route('member.index') }}" class="btn btn-default">Kembali</a>
 							{{ html()->button('Simpan')->class('btn btn-primary')->attribute('type', 'submit') }}
 						</div>
 					</div>

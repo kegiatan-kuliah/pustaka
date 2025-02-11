@@ -30,16 +30,10 @@
 								->attribute('placeholder', 'Isikan email anggota') }}
 						</div>
             <div class="mb-3">
-							{{ html()->label('No Anggota', 'member_no')->class('form-label') }}
-							{{ html()->input('text', 'member_no', $data->member_no)
-								->class('form-control')->attribute('required', true)
-								->attribute('placeholder', 'Isikan no anggota') }}
-						</div>
-            <div class="mb-3">
-							{{ html()->label('No Identitas Anggota', 'identity_no')->class('form-label') }}
+							{{ html()->label('NISN', 'identity_no')->class('form-label') }}
 							{{ html()->input('text', 'identity_no', $data->identity_no)
 								->class('form-control')->attribute('required', true)
-								->attribute('placeholder', 'Isikan no identitas anggota') }}
+								->attribute('placeholder', 'Isikan nisn') }}
 						</div>
             <div class="mb-3">
 							{{ html()->label('Jenis Kelamin Anggota', 'gender')->class('form-label') }}
@@ -47,17 +41,11 @@
                   ->class('form-control')
                   ->attribute('required', true) }}
 						</div>
-            <div class="mb-3">
-							{{ html()->label('No HP Anggota', 'phone_no')->class('form-label') }}
-							{{ html()->input('text', 'phone_no', $data->phone_no)
-								->class('form-control')->attribute('required', true)
-								->attribute('placeholder', 'Isikan no hp anggota') }}
-						</div>
-            <div class="mb-3">
-							{{ html()->label('Alamat Anggota', 'address')->class('form-label') }}
-							{{ html()->input('textarea', 'address', $data->address)
-								->class('form-control')->attribute('required', true)
-								->attribute('placeholder', 'Isikan alamat penerbit') }}
+						<div class="mb-3">
+							{{ html()->label('Kelas', 'room_id')->class('form-label') }}
+							{{ html()->select('room_id', ['' => 'Pilih Kelas'] + $rooms->toArray(), $data->room_id)
+                  ->class('form-control')
+                  ->attribute('required', true) }}
 						</div>
 					</div>
 					<div class="card-footer">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\User;
+use App\Models\Room;
 use Validator;
 use App\DataTables\MembersDataTable;
 use Illuminate\Validation\Rule;
@@ -25,14 +26,19 @@ class MemberController extends Controller
 
     public function new()
     {
-        return view('pages.member.new');
+        $rooms = Room::pluck('name','id');
+        return view('pages.member.new')->with([
+            'rooms' => $rooms
+        ]);
     }
 
     public function edit($id)
     {
         $data = $this->table->findOrFail($id);
+        $rooms = Room::pluck('name','id');
         return view('pages.member.edit')->with([
-            'data' => $data
+            'data' => $data,
+            'rooms' => $rooms
         ]);
     }
 
@@ -46,11 +52,9 @@ class MemberController extends Controller
                 }),
             ],
             'identity_no' => 'required|min:3|unique:members,identity_no',
-            'member_no' => 'required|min:3|unique:members,member_no',
             'name' => 'required|min:3',
             'gender' => 'required',
-            'phone_no' => 'required',
-            'address' => 'required',
+            'room_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -69,12 +73,11 @@ class MemberController extends Controller
         $store = $this->table->create([
             'name' => $request->name,
             'email' => $request->email,
-            'member_no' => $request->member_no,
+            'member_no' => Member::generateMemberNo(),
             'identity_no' => $request->identity_no,
             'gender' => $request->gender,
-            'phone_no' => $request->phone_no,
-            'address' => $request->address,
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'room_id' => $request->room_id,
         ]);
 
         return redirect()->route('member.index')->with('success', 'Data saved successfully');
@@ -90,11 +93,9 @@ class MemberController extends Controller
                 })->ignore($request->id),
             ],
             'identity_no' => 'required|min:3|unique:members,identity_no,'.$request->id,
-            'member_no' => 'required|min:3|unique:members,member_no,'.$request->id,
             'name' => 'required|min:3',
             'gender' => 'required',
-            'phone_no' => 'required',
-            'address' => 'required',
+            'room_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -110,11 +111,10 @@ class MemberController extends Controller
 
         $store = $this->table->where('id', $request->id)->update([
             'name' => $request->name,
-            'member_no' => $request->member_no,
+            // 'member_no' => $request->member_no,
             'identity_no' => $request->identity_no,
             'gender' => $request->gender,
-            'phone_no' => $request->phone_no,
-            'address' => $request->address
+            'room_id' => $request->room_id,
         ]);
 
         return redirect()->route('member.index')->with('success', 'Data updated successfully');
