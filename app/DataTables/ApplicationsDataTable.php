@@ -29,6 +29,17 @@ class ApplicationsDataTable extends DataTable
             ->addColumn('room', function($model) {
                 return $model->member->room->name;
             })
+            ->addColumn('status', function ($model) {
+                if($model->status === 'BORROW') {
+                    return 'PINJAM';
+                }
+
+                if($model->status === 'RETURN') {
+                    return 'DIKEMBALIKAN';
+                }
+
+                return 'MASALAH';
+            })
             ->addColumn('action', function($model){ 
                 return '
                     <div class="d-flex gap-2">
@@ -46,7 +57,7 @@ class ApplicationsDataTable extends DataTable
      */
     public function query(Application $model): QueryBuilder
     {
-        return $model->where('status','BORROW')->newQuery();
+        return $model->newQuery();
     }
 
     /**
@@ -88,6 +99,7 @@ class ApplicationsDataTable extends DataTable
             Column::make('total_quantity')->title('Jumlah'),
             Column::make('name')->title('Nama'),
             Column::make('room')->title('Kelas'),
+            Column::make('status'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

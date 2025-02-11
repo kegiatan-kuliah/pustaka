@@ -28,20 +28,10 @@
       </a>
     </div>
   </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
-      <span class="nav-link-title">
-        Transaksi
-      </span>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('application.index') }}">
+      <span class="nav-link-title">Pinjam Buku</span>
     </a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="{{ route('application.index') }}" rel="noopener">
-        Pinjam
-      </a>
-      <a class="dropdown-item" href="{{ route('return.index') }}">
-        Kembali
-      </a>
-    </div>
   </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
