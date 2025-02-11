@@ -56,7 +56,7 @@
       <a class="dropdown-item" href="{{ route('member.index') }}">
         Anggota
       </a>
-      <a class="dropdown-item" href="{{ route('user.index') }}">
+      <a class="dropdown-item" href="{{ route('employee.index') }}">
         Guru
       </a>
     </div>

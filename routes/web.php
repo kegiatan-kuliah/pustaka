@@ -8,6 +8,7 @@ use App\Http\Controllers\BookLocationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\ReturnController;
 use App\Http\Controllers\AuthController;
@@ -81,6 +82,15 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
     });
     
     Route::controller(MemberController::class)->prefix('member')->name('member.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/new', 'new')->name('new');
+        Route::get('/{id}', 'edit')->name('edit');
+        Route::post('/', 'store')->name('store');
+        Route::put('/', 'update')->name('update');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
+    });
+
+    Route::controller(EmployeeController::class)->prefix('employee')->name('employee.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/new', 'new')->name('new');
         Route::get('/{id}', 'edit')->name('edit');
