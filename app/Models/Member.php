@@ -24,4 +24,9 @@ class Member extends Model
     
         return "PUSTAKA-{$sequence}";
     }
+
+    public function room()
+    {
+        return $this->belongsTo(Room::class, 'room_id');
+    }
 }

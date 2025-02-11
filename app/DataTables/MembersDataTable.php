@@ -29,6 +29,12 @@ class MembersDataTable extends DataTable
             ->addColumn('action', function($model){ 
                 return '
                     <div class="d-flex gap-2">
+                        <a href="'.route('member.print_free_card', $model->id).'" class="btn btn-6 btn-ghost-primary w-100">
+                            Cetak Kartu Bebas Pustaka
+                        </a>
+                        <a href="'.route('member.print_member_card', $model->id).'" class="btn btn-6 btn-ghost-primary w-100">
+                            Cetak Kartu Anggota
+                        </a>
                         <a href="'.route('member.edit', $model->id).'" class="btn btn-6 btn-ghost-primary w-100">
                             Sunting
                         </a>

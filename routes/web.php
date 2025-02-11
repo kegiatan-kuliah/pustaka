@@ -83,6 +83,8 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
     
     Route::controller(MemberController::class)->prefix('member')->name('member.')->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/print-member-card/{id}', 'memberCard')->name('print_member_card');
+        Route::get('/print-free-card/{id}', 'freeCard')->name('print_free_card');
         Route::get('/new', 'new')->name('new');
         Route::get('/{id}', 'edit')->name('edit');
         Route::post('/', 'store')->name('store');

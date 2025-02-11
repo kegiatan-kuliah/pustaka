@@ -9,6 +9,7 @@ use App\Models\Room;
 use Validator;
 use App\DataTables\MembersDataTable;
 use Illuminate\Validation\Rule;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MemberController extends Controller
 {
@@ -129,5 +130,19 @@ class MemberController extends Controller
         $destroy = $data->delete();
 
         return redirect()->route('member.index')->with('success', 'Data deleted successfully');
+    }
+
+    public function memberCard($id)
+    {
+        $data = $this->table->findOrFail($id);
+        $pdf = Pdf::loadView('pdf.member_card', ['data' => $data])->setPaper('a4', 'potrait');
+        return $pdf->stream();
+    }
+
+    public function freeCard($id)
+    {
+        $data = $this->table->findOrFail($id);
+        $pdf = Pdf::loadView('pdf.free_card', ['data' => $data])->setPaper('a4', 'potrait');
+        return $pdf->stream();
     }
 }
