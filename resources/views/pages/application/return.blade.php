@@ -18,6 +18,8 @@
 </div>
 @endsection
 @section('content')
+{{ html()->form('POST', route('application.return_store'))->attribute('enctype', 'multipart/form-data')->open() }}
+{{ html()->hidden('id', $data->id) }}
 <div class="row row-cards">
   <div class="card">
     <div class="card-body">
@@ -45,15 +47,22 @@
                 <tr>
                   <th></th>
                   <th>Judul</th>
-                  <th>Jumlah</th>
+                  <th>Jumlah Yang dikembalikan</th>
+                  <th>Keterangan</th>
                 </tr>
               </thead>
               <tbody id="renderData">
                 @foreach($data->items as $index => $item)
                   <tr>
-                    <td>{{ $index + 1 }}</td>
+                    <td>{{ html()->input('checkbox', 'items['.$index.'][id]', $item->id) }}</td>
                     <td>{{ $item->title }}</td>
-                    <td>{{ $item->quantity }}</td>
+                    <td>{{ html()->input('number', 'items['.$index.'][qty]')
+                          ->class('form-control')
+                          ->attribute('min', '1')
+                          ->attribute('placeholder', 'Isikan jumlah') }}</td>
+                    <td>{{ html()->input('text', 'items['.$index.'][description]')
+                          ->class('form-control')
+                          ->attribute('placeholder', 'Isikan keterangan') }}</td>
                   </tr>
                 @endforeach
               </tbody>
@@ -62,6 +71,13 @@
         </div>
       </div>
     </div>
+    <div class="card-footer">
+      <div class="d-flex justify-content-between">
+        <a href="{{ route('application.index') }}" class="btn btn-default">Kembali</a>
+        {{ html()->button('Simpan')->class('btn btn-primary')->attribute('type', 'submit') }}
+      </div>
+    </div>
   </div>
 </div>
+{{ html()->form()->close() }}
 @endsection

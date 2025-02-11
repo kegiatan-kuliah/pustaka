@@ -101,22 +101,6 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
         Route::put('/', 'update')->name('update');
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
     });
-    
-    Route::controller(BorrowController::class)->prefix('borrow')->name('borrow.')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/new', 'new')->name('new');
-        Route::get('/{id}', 'edit')->name('edit');
-        Route::post('/', 'store')->name('store');
-        Route::put('/', 'update')->name('update');
-    });
-    
-    Route::controller(ReturnController::class)->prefix('return')->name('return.')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/new', 'new')->name('new');
-        Route::get('/{id}', 'edit')->name('edit');
-        Route::post('/', 'store')->name('store');
-        Route::put('/', 'update')->name('update');
-    });
 
     Route::controller(RoomController::class)->prefix('room')->name('room.')->group(function () {
         Route::get('/', 'index')->name('index');
@@ -131,6 +115,8 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
         Route::get('/', 'index')->name('index');
         Route::get('/new', 'new')->name('new');
         Route::get('/detail/{id}', 'detail')->name('detail');
+        Route::get('/return/{id}', 'return')->name('return');
         Route::post('/', 'store')->name('store');
+        Route::post('/return', 'returnStore')->name('return_store');
     });
 // });

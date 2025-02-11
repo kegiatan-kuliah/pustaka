@@ -9,7 +9,7 @@ class ApplicationItem extends Model
     protected $table = 'application_items';
 
     protected $fillable = [
-        'title','description','quantity','application_id'
+        'title','description','quantity','application_id','return_quantity'
     ];
 
     public function application()

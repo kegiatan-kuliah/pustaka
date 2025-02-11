@@ -43,6 +43,9 @@ class ApplicationsDataTable extends DataTable
             ->addColumn('action', function($model){ 
                 return '
                     <div class="d-flex gap-2">
+                        <a href="'.route('application.return', $model->id).'" class="btn btn-6 btn-ghost-info w-100">
+                            Kembalikan
+                        </a>
                         <a href="'.route('application.detail', $model->id).'" class="btn btn-6 btn-ghost-primary w-100">
                             Detail
                         </a>
