@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
+class Employee extends Model
 {
-    protected $table = 'members';
+    protected $table = 'employees';
 
     protected $fillable = [
-        'name','identity_no','member_no','gender','photo','user_id','room_id'
+        'name','identity_no','gender','photo','user_id'
     ];
 
     public function user()

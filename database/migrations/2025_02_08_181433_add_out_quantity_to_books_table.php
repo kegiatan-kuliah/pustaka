@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::table('books', function (Blueprint $table) {
             $table->unsignedBigInteger('quantity')->after('condition');
             $table->unsignedBigInteger('borrow_quantity')->after('quantity');
+            $table->unsignedBigInteger('end_quantity')->after('borrow_quantity');
         });
     }
 

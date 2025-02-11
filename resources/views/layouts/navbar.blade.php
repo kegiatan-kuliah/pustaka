@@ -4,16 +4,6 @@
       <span class="nav-link-title">Beranda</span>
     </a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('author.index') }}">
-      <span class="nav-link-title">Pengarang</span>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('publisher.index') }}">
-      <span class="nav-link-title">Penerbit</span>
-    </a>
-  </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
       <span class="nav-link-title">
@@ -47,14 +37,28 @@
       </a>
     </div>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('member.index') }}">
-      <span class="nav-link-title">Anggota</span>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+      <span class="nav-link-title">
+        Master Data
+      </span>
     </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('user.index') }}">
-      <span class="nav-link-title">Guru</span>
-    </a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="{{ route('author.index') }}" rel="noopener">
+        Pengarang
+      </a>
+      <a class="dropdown-item" href="{{ route('publisher.index') }}">
+        Penerbit
+      </a>
+      <a class="dropdown-item" href="{{ route('room.index') }}">
+        Kelas
+      </a>
+      <a class="dropdown-item" href="{{ route('member.index') }}">
+        Anggota
+      </a>
+      <a class="dropdown-item" href="{{ route('user.index') }}">
+        Guru
+      </a>
+    </div>
   </li>
 </ul>
