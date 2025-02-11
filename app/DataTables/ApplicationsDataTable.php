@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\BookTransaction;
+use App\Models\Application;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ReturnsDataTable extends DataTable
+class ApplicationsDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -23,17 +23,17 @@ class ReturnsDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addIndexColumn()
-            ->addColumn('book', function($model) {
-                return $model->book->title;
-            })
-            ->addColumn('member', function($model) {
+            ->addColumn('name', function($model) {
                 return $model->member->name;
+            })
+            ->addColumn('room', function($model) {
+                return $model->member->room->name;
             })
             ->addColumn('action', function($model){ 
                 return '
                     <div class="d-flex gap-2">
-                        <a href="'.route('return.edit', $model->id).'" class="btn btn-6 btn-ghost-primary w-100">
-                            Sunting
+                        <a href="'.route('application.detail', $model->id).'" class="btn btn-6 btn-ghost-primary w-100">
+                            Detail
                         </a>
                     </div>
                 ';
@@ -44,9 +44,9 @@ class ReturnsDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(BookTransaction $model): QueryBuilder
+    public function query(Application $model): QueryBuilder
     {
-        return $model->where('status', 'return')->newQuery();
+        return $model->where('status','BORROW')->newQuery();
     }
 
     /**
@@ -55,19 +55,19 @@ class ReturnsDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('returns-table')
+                    ->setTableId('application-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
                     ->orderBy(1)
                     ->selectStyleSingle()
                     ->buttons([
-                        // Button::make('excel'),
-                        // Button::make('csv'),
-                        // Button::make('pdf'),
-                        // Button::make('print'),
-                        // Button::make('reset'),
-                        // Button::make('reload')
+                        Button::make('excel'),
+                        Button::make('csv'),
+                        Button::make('pdf'),
+                        Button::make('print'),
+                        Button::make('reset'),
+                        Button::make('reload')
                     ]);
     }
 
@@ -83,11 +83,11 @@ class ReturnsDataTable extends DataTable
                 ->printable(false)
                 ->title('#')
                 ->width(20),
-            Column::make('date'),
-            Column::make('condition'),
-            Column::make('description'),
-            Column::make('member')->title('Anggota'),
-            Column::make('book')->title('Buku'),
+            Column::make('application_no')->title('Nomor ID'),
+            Column::make('date')->title('Tanggal Peminjaman'),
+            Column::make('total_quantity')->title('Jumlah'),
+            Column::make('name')->title('Nama'),
+            Column::make('room')->title('Kelas'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
@@ -101,6 +101,6 @@ class ReturnsDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Returns_' . date('YmdHis');
+        return 'Application_' . date('YmdHis');
     }
 }

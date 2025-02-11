@@ -35,7 +35,7 @@
       </span>
     </a>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="{{ route('borrow.index') }}" rel="noopener">
+      <a class="dropdown-item" href="{{ route('application.index') }}" rel="noopener">
         Pinjam
       </a>
       <a class="dropdown-item" href="{{ route('return.index') }}">
