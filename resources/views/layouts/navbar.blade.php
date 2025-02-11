@@ -17,6 +17,12 @@
       <a class="dropdown-item" href="{{ route('book_location.index') }}">
         Lokasi
       </a>
+      <a class="dropdown-item" href="{{ route('author.index') }}" rel="noopener">
+        Pengarang
+      </a>
+      <a class="dropdown-item" href="{{ route('publisher.index') }}">
+        Penerbit
+      </a>
       <a class="dropdown-item" href="{{ route('book.index') }}" rel="noopener">
         Katalog
       </a>
@@ -44,12 +50,6 @@
       </span>
     </a>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="{{ route('author.index') }}" rel="noopener">
-        Pengarang
-      </a>
-      <a class="dropdown-item" href="{{ route('publisher.index') }}">
-        Penerbit
-      </a>
       <a class="dropdown-item" href="{{ route('room.index') }}">
         Kelas
       </a>

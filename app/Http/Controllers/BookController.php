@@ -89,6 +89,7 @@ class BookController extends Controller
             'condition' => $request->condition,
             'quantity' => $request->quantity,
             'borrow_quantity' => 0,
+            'end_quantity' => $request->quantity,
             'price' => $request->price,
             'total_pages' => $request->total_pages,
             'synopsis' => $request->synopsis,

@@ -29,18 +29,23 @@ class MembersDataTable extends DataTable
             ->addColumn('action', function($model){ 
                 return '
                     <div class="d-flex gap-2">
-                        <a href="'.route('member.print_free_card', $model->id).'" class="btn btn-6 btn-ghost-primary w-100">
-                            Cetak Kartu Bebas Pustaka
-                        </a>
-                        <a href="'.route('member.print_member_card', $model->id).'" class="btn btn-6 btn-ghost-primary w-100">
-                            Cetak Kartu Anggota
-                        </a>
-                        <a href="'.route('member.edit', $model->id).'" class="btn btn-6 btn-ghost-primary w-100">
-                            Sunting
-                        </a>
-                        <a href="'.route('member.destroy', $model->id).'" class="btn btn-6 btn-ghost-danger w-100">
-                            Hapus
-                        </a>
+                        <button data-bs-toggle="dropdown" type="button" class="btn dropdown-toggle dropdown-toggle-split" aria-expanded="false">
+                            
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" style="">
+                            <a class="dropdown-item" href="'.route('member.print_free_card', $model->id).'">
+                                Cetak Kartu Bebas Pustaka
+                            </a>
+                            <a class="dropdown-item" href="'.route('member.print_member_card', $model->id).'">
+                                Cetak Kartu Anggota
+                            </a>
+                            <a class="dropdown-item" href="'.route('member.edit', $model->id).'">
+                                Sunting
+                            </a>
+                            <a class="dropdown-item" href="'.route('member.destroy', $model->id).'">
+                                Hapus
+                            </a>
+                        </div>
                     </div>
                 ';
             })

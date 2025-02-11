@@ -97,6 +97,7 @@ class BooksDataTable extends DataTable
             Column::make('location')->title('Lokasi'),
             Column::make('quantity'),
             Column::make('borrow_quantity')->title('Borrow Quantity'),
+            Column::make('end_quantity')->title('End Quantity'),
             Column::make('price'),
             Column::make('total_pages')->title('Total Page'),
             Column::computed('action')

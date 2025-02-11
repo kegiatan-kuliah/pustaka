@@ -65,6 +65,10 @@
             <p>{{ $data->borrow_quantity }} </p>
           </div>
           <div class="mb-3">
+            {{ html()->label('Jumlah Akhir Buku', 'condition')->class('form-label') }}
+            <p>{{ $data->end_quantity }} </p>
+          </div>
+          <div class="mb-3">
             {{ html()->label('Harga Buku', 'price')->class('form-label') }}
             <p>{{ $data->price }} </p>
           </div>

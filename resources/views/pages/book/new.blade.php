@@ -24,9 +24,9 @@
 						</div>
             <div class="mb-3">
 							{{ html()->label('Kondisi Buku', 'condition')->class('form-label') }}
-							{{ html()->input('text', 'condition')
-								->class('form-control')->attribute('required', true)
-								->attribute('placeholder', 'Isikan kondisi buku') }}
+							{{ html()->select('condition', ['' => 'Pilih Kondisi', 'rusak' => 'Rusak', 'baik' => 'Baik'])
+                  ->class('form-control')
+                  ->attribute('required', true) }}
 						</div>
             <div class="mb-3">
 							{{ html()->label('Jumlah Buku', 'quantity')->class('form-label') }}
