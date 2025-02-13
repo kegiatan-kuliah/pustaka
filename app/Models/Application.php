@@ -9,7 +9,7 @@ class Application extends Model
     protected $table = 'applications';
 
     protected $fillable = [
-        'application_no','date','total_quantity','total_return_quantity','status','member_id'
+        'application_no','date','total_quantity','total_return_quantity','status','member_id','return_date'
     ];
 
 

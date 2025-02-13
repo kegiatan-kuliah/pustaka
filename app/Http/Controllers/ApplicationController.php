@@ -154,6 +154,7 @@ class ApplicationController extends Controller
 
             $data->total_return_quantity = $total;
             $data->status = $total === $data->total_quantity ? 'RETURN' : 'HOLD';
+            $data->return_date = Carbon::now()->format('Y-m-d');
             $data->save();
 
             return redirect()->route('application.index')->with('success', 'Data saved successfully');
