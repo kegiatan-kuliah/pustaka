@@ -8,6 +8,15 @@
       </div>
       <div class="col-auto ms-auto">
         <div class="btn-list">
+          @if($data->status === 'BORROW')
+            <a href="{{ route('application.booking', $data->id) }}" class="btn btn-primary btn-5 d-sm-inline-block">
+              Cetak Tanda Peminjaman
+            </a>
+          @else
+            <a href="{{ route('application.return_booking', $data->id) }}" class="btn btn-primary btn-5 d-sm-inline-block">
+              Cetak Tanda Pengembalian
+            </a>
+          @endif
           <a href="{{ route('application.index') }}" class="btn btn-default btn-5 d-sm-inline-block">
             Kembali
           </a>

@@ -117,6 +117,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/new', 'new')->name('new');
         Route::get('/detail/{id}', 'detail')->name('detail');
         Route::get('/return/{id}', 'return')->name('return');
+        Route::get('/booking/{id}', 'booking')->name('booking');
+        Route::get('/return-booking/{id}', 'returnBooking')->name('return_booking');
         Route::post('/', 'store')->name('store');
         Route::post('/return', 'returnStore')->name('return_store');
         Route::post('/return-borrow', 'printBorrowPeriod')->name('borrow_period');

@@ -186,4 +186,18 @@ class ApplicationController extends Controller
         return $pdf->stream();
     }
 
+    public function booking($id)
+    {
+        $data = $this->table->findOrFail($id);
+        $pdf = Pdf::loadView('pdf.booking', ['data' => $data])->setPaper('a4', 'potrait');
+        return $pdf->stream();
+    }
+
+    public function returnBooking($id)
+    {
+        $data = $this->table->findOrFail($id);
+        $pdf = Pdf::loadView('pdf.return', ['data' => $data])->setPaper('a4', 'potrait');
+        return $pdf->stream();
+    }
+
 }
