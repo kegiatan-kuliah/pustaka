@@ -119,5 +119,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/return/{id}', 'return')->name('return');
         Route::post('/', 'store')->name('store');
         Route::post('/return', 'returnStore')->name('return_store');
+        Route::post('/return-borrow', 'printBorrowPeriod')->name('borrow_period');
+        Route::post('/return-period', 'printReturnPeriod')->name('return_period');
     });
 });

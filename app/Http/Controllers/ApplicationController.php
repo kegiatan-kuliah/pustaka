@@ -164,4 +164,26 @@ class ApplicationController extends Controller
         
     }
 
+    public function printBorrowPeriod(Request $request)
+    {
+        $applications = $this->table->whereBetween('date',[$request->start_date, $request->end_date])->whereNull('return_date')->get();
+        $pdf = Pdf::loadView('pdf.borrow_period', [
+            'applications' => $applications,
+            'startDate' => $request->start_date,
+            'endDate' => $request->end_date
+        ])->setPaper('a4', 'potrait');
+        return $pdf->stream();
+    }
+
+    public function printReturnPeriod(Request $request)
+    {
+        $applications = $this->table->whereBetween('return_date',[$request->start_date, $request->end_date])->where('status','!=','BORROW')->get();
+        $pdf = Pdf::loadView('pdf.return_period', [
+            'applications' => $applications,
+            'startDate' => $request->start_date,
+            'endDate' => $request->end_date
+        ])->setPaper('a4', 'potrait');
+        return $pdf->stream();
+    }
+
 }
