@@ -13,7 +13,7 @@
 <div class="page-body">
 	<div class="container-xl">
 		<div class="row row-cards">
-			{{ html()->form('POST', route('member.store'))->open() }}
+			{{ html()->form('POST', route('member.store'))->attribute('enctype', 'multipart/form-data')->open() }}
 				<div class="card">
 					<div class="card-body">
 						<div class="mb-3">
@@ -33,6 +33,11 @@
 							{{ html()->input('text', 'identity_no')
 								->class('form-control')->attribute('required', true)
 								->attribute('placeholder', 'Isikan nisn') }}
+						</div>
+						<div class="mb-3">
+							{{ html()->label('Foto', 'photo')->class('form-label') }}
+							{{ html()->file('photo')
+								->class('form-control')->attribute('required', true) }}
 						</div>
             <div class="mb-3">
 							{{ html()->label('Jenis Kelamin Anggota', 'gender')->class('form-label') }}

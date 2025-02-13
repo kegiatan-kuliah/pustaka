@@ -125,8 +125,11 @@ class ApplicationController extends Controller
         if($request->has('items') && count($request->items) > 0) {
             $total = 0;
             foreach($request->items as $item) {
+                if(!isset($item['id'])) {
+                    continue;
+                }
                 $applicationItem = ApplicationItem::where('id', $item['id'])->first();
-                if(!isset($item['qty'])) {
+                if(isset($item['id']) &&!isset($item['qty'])) {
                     return redirect()->back()->with('danger','Pastikan anda mengisi jumlah pada buku yang dipilih');
                 }
                 $total += $item['qty'];

@@ -29,4 +29,9 @@ class Member extends Model
     {
         return $this->belongsTo(Room::class, 'room_id');
     }
+
+    public function books()
+    {
+        return $this->hasMany(Member::class, 'member_id');
+    }
 }

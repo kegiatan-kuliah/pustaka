@@ -27,6 +27,7 @@
                 <tr>
                   <th></th>
                   <th>Judul</th>
+                  <th>Sisa Buku</th>
                   <th>Jumlah</th>
                 </tr>
               </thead>
@@ -35,6 +36,7 @@
                   <tr>
                     <td>{{ html()->input('checkbox', 'items['.$index.'][id]', $book->id) }}</td>
                     <td>{{ $book->title }}</td>
+                    <td>{{ $book->end_quantity }}</td>
                     <td>{{ html()->input('number', 'items['.$index.'][qty]')
                           ->class('form-control')
                           ->attribute('min', '1')

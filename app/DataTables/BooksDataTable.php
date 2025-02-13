@@ -35,6 +35,9 @@ class BooksDataTable extends DataTable
             ->addColumn('location', function($model) {
                 return $model->location->name;
             })
+            ->editColumn('price', function($model) {
+                return "Rp " . number_format($model->price, 0, ",", ".");
+            })
             ->addColumn('action', function($model){ 
                 return '
                     <div class="d-flex gap-2">
@@ -98,7 +101,7 @@ class BooksDataTable extends DataTable
             Column::make('quantity'),
             Column::make('borrow_quantity')->title('Borrow Quantity'),
             Column::make('end_quantity')->title('End Quantity'),
-            Column::make('price'),
+            Column::make('price')->title('Harga Satuan'),
             Column::make('total_pages')->title('Total Page'),
             Column::computed('action')
                   ->exportable(false)

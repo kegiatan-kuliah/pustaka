@@ -22,7 +22,7 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
     Route::post('/login', 'login')->name('login');
 });
 
-// Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::controller(DashboardController::class)->name('dashboard.')->group(function () {
         Route::get('/', 'index')->name('index');
     });
@@ -75,6 +75,7 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
     Route::controller(BookController::class)->prefix('book')->name('book.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/new', 'new')->name('new');
+        Route::get('/report', 'report')->name('report');
         Route::get('/{id}', 'edit')->name('edit');
         Route::get('/detail/{id}', 'detail')->name('detail');
         Route::post('/', 'store')->name('store');
@@ -119,4 +120,4 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
         Route::post('/', 'store')->name('store');
         Route::post('/return', 'returnStore')->name('return_store');
     });
-// });
+});

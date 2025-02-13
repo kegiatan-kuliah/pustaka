@@ -63,6 +63,8 @@ class MemberController extends Controller
                     ->withErrors($validator);
         }
 
+        $path = $request->file('photo')->store('members','public');
+
         $user = $this->userTable->create([
             'name' => $request->name,
             'email' => $request->email,
@@ -77,6 +79,7 @@ class MemberController extends Controller
             'member_no' => Member::generateMemberNo(),
             'identity_no' => $request->identity_no,
             'gender' => $request->gender,
+            'photo' => $path,
             'user_id' => $user->id,
             'room_id' => $request->room_id,
         ]);
@@ -88,10 +91,7 @@ class MemberController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => [
                 'required',
-                'min:3',
-                Rule::unique('users', 'email')->where(function ($query) use ($request) {
-                    return $query->where('role', 'member');
-                })->ignore($request->id),
+                'min:3'
             ],
             'identity_no' => 'required|min:3|unique:members,identity_no,'.$request->id,
             'name' => 'required|min:3',
@@ -106,13 +106,19 @@ class MemberController extends Controller
 
         $member = $this->table->findOrFail($request->id);
 
+        if($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('members','public');
+        } else {
+            $path = $member->photo;
+        }
+
         $this->userTable->where('id', $member->user_id)->update([
             'email' => $request->email,
         ]);
 
         $store = $this->table->where('id', $request->id)->update([
             'name' => $request->name,
-            // 'member_no' => $request->member_no,
+            'photo' => $path,
             'identity_no' => $request->identity_no,
             'gender' => $request->gender,
             'room_id' => $request->room_id,

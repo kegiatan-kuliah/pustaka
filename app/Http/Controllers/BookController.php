@@ -10,6 +10,7 @@ use App\Models\Author;
 use App\Models\Publisher;
 use App\Models\BookLocation;
 use App\DataTables\BooksDataTable;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class BookController extends Controller
 {
@@ -153,5 +154,13 @@ class BookController extends Controller
         $destroy = $data->delete();
 
         return redirect()->route('book.index')->with('success', 'Data deleted successfully');
+    }
+
+    public function report()
+    {
+        $books = $this->table->get();
+
+        $pdf = Pdf::loadView('pdf.book', ['books' => $books])->setPaper('a4', 'potrait');
+        return $pdf->stream();
     }
 }
