@@ -70,7 +70,7 @@
                     <td>
                         <div class="label">
                             <strong>Kartu Anggota Pustaka</strong>
-                            <p>SMP N 3 Tanjung Raya</p>
+                            <p>SD NEGERI 25 KINALI</p>
                         </div>
                     </td>
                 </tr>

@@ -38,7 +38,7 @@
     <div>
         <img src="{{ public_path('img/logo-provinsi-sumbar.png') }}" alt="" width="50px" height="50px" style="position: absolute; top: 25px;">
         <h3 style="margin-bottom: 0px; text-align: center;">PEMERINTAH PROVINSI SUMATERA BARAT</h3>
-        <h1 style="margin-top: 0px; text-align: center;">SMP NEGERI 3 TANJUNG RAYA</h1>
+        <h1 style="margin-top: 0px; text-align: center;">SD NEGERI 25 KINALI</h1>
         <hr>
     </div>
     <h2 style="text-align: center;">Laporan Pengembalian Buku</h2>

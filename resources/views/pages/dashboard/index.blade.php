@@ -13,6 +13,6 @@
 @section('content')
   <div class="text-center">
     <h1>Selamat Datang di Sistem Informasi Perpustakaan</h1>
-    <h1>SMP N 3 Tanjung Raya</h1>
+    <h1>SD NEGERI 25 KINALI</h1>
   </div>
 @endsection
