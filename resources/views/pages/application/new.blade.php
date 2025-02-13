@@ -16,11 +16,18 @@
 		<div class="row row-cards">
       <div class="card">
         <div class="card-body">
+          @if(Auth::user()->role === 'member')
+            {{ html()->hidden('member_id', Auth::user()->member->id) }}
+            <div class="mb-3">
+              <label for="" class="form-label">{{ Auth::user()->name }} - {{ Auth::user()->member->member_no }}</label>
+            </div>
+          @else
           <div class="mb-3">
-            {{ html()->label('Anggota', 'member_id')->class('form-label') }}
-            {{ html()->select('member_id', ['' => 'Pilih Anggota'] + $members->toArray())
-                ->class('form-control') }}
-          </div>
+              {{ html()->label('Anggota', 'member_id')->class('form-label') }}
+              {{ html()->select('member_id', ['' => 'Pilih Anggota'] + $members->toArray())
+                  ->class('form-control') }}
+            </div>
+          @endif
           <div class="table-responsive">
             <table class="table table-bordered">
               <thead>

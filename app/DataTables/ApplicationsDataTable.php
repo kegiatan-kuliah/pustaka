@@ -11,6 +11,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Auth;
 
 class ApplicationsDataTable extends DataTable
 {
@@ -42,16 +43,26 @@ class ApplicationsDataTable extends DataTable
             })
             ->addColumn('action', function($model){ 
                 if($model->status === 'BORROW') {
-                    return '
-                        <div class="d-flex gap-2">
-                            <a href="'.route('application.return', $model->id).'" class="btn btn-6 btn-ghost-info w-100">
-                                Kembalikan
-                            </a>
-                            <a href="'.route('application.detail', $model->id).'" class="btn btn-6 btn-ghost-primary w-100">
-                                Detail
-                            </a>
-                        </div>
-                    ';
+                    if(Auth::user()->role === 'member') {
+                        return '
+                            <div class="d-flex gap-2">
+                                <a href="'.route('application.detail', $model->id).'" class="btn btn-6 btn-ghost-primary w-100">
+                                    Detail
+                                </a>
+                            </div>
+                        ';
+                    } else {
+                        return '
+                            <div class="d-flex gap-2">
+                                <a href="'.route('application.return', $model->id).'" class="btn btn-6 btn-ghost-info w-100">
+                                    Kembalikan
+                                </a>
+                                <a href="'.route('application.detail', $model->id).'" class="btn btn-6 btn-ghost-primary w-100">
+                                    Detail
+                                </a>
+                            </div>
+                        ';
+                    }
                 }
                 return '
                     <div class="d-flex gap-2">
@@ -69,7 +80,11 @@ class ApplicationsDataTable extends DataTable
      */
     public function query(Application $model): QueryBuilder
     {
-        return $model->newQuery();
+        if(Auth::user()->role === 'member') {
+            return $model->where('member_id', Auth::user()->member->id)->newQuery();
+        } else {
+            return $model->newQuery();
+        }
     }
 
     /**
