@@ -35,12 +35,12 @@
 </head>
 
 <body>
-    <!-- <div>
+    <div>
         <img src="{{ public_path('img/logo-provinsi-sumbar.png') }}" alt="" width="50px" height="50px" style="position: absolute; top: 25px;">
         <h3 style="margin-bottom: 0px; text-align: center;">PEMERINTAH PROVINSI SUMATERA BARAT</h3>
-        <h1 style="margin-top: 0px; text-align: center;">SMK NEGERI 1 SOLOK SELATAN</h1>
+        <h1 style="margin-top: 0px; text-align: center;">SMP NEGERI 3 TANJUNG RAYA</h1>
         <hr>
-    </div> -->
+    </div>
     <h2 style="text-align: center;">Tanda Peminjaman Buku</h2>
   
     <div>
@@ -97,32 +97,31 @@
         @endforeach
       </tbody>
     </table>
-
     
-    <!-- <div style="display: inline-block; width: 100%; margin-top: 40px;">
+    <div style="display: inline-block; width: 100%; margin-top: 40px;">
         <div style="width: 30%; float: left;">
             <br>
             <br>
             <br>
-            <p style="margin-top:0px; margin-bottom: 0px;">Mengetahui</p>
-            <p style="margin-top:0px; margin-bottom: 0px;">Kepala Sekolah</p>
-            <br>
-            <br>
-            <br>
-            <p style="margin-top:0px; margin-bottom: 0px;">EFRIZOLSE.MM</p>
-            <p style="margin-top:0px; margin-bottom: 0px;">NIP. 197212012002121002</p>
-        </div>
-        <div style="width: 50%; float: right; text-align: right;">
-            <p>Solok Selatan, {{ Carbon::now()->translatedFormat('d F Y')}} </p>
-            <p style="margin-top:0px; margin-bottom: 0px;">Pengurus Barang Pembantu</p>
+            <p style="margin-top:0px; margin-bottom: 0px;">Kepala Perpustakaan</p>
             <p style="margin-top:0px; margin-bottom: 0px;">Sekolah</p>
             <br>
             <br>
             <br>
-            <p style="margin-top:0px; margin-bottom: 0px;">ZUMMI WALNI,A.Md</p>
-            <p style="margin-top:0px; margin-bottom: 0px;">NIP. 198310162014062002</p>
+            <p style="margin-top:0px; margin-bottom: 0px;">Dhiawr Rahmi, S.Pd I</p>
+            <p style="margin-top:0px; margin-bottom: 0px;">NIP. 198511232022212011</p>
         </div>
-    </div> -->
+        <div style="width: 50%; float: right; text-align: right;">
+            <p>Tanjung Raya, {{ Carbon::now()->translatedFormat('d F Y')}} </p>
+            <p style="margin-top:0px; margin-bottom: 0px;">Yang Meminjam</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p style="margin-top:0px; margin-bottom: 0px;">{{ $data->member->name }}</p>
+            <p style="margin-top:0px; margin-bottom: 0px;">NISN. {{ $data->member->identity_no }}</p>
+        </div>
+    </div>
 </body>
 
 </html>

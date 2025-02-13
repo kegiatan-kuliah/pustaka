@@ -35,12 +35,12 @@
 </head>
 
 <body>
-    <!-- <div>
+    <div>
         <img src="{{ public_path('img/logo-provinsi-sumbar.png') }}" alt="" width="50px" height="50px" style="position: absolute; top: 25px;">
         <h3 style="margin-bottom: 0px; text-align: center;">PEMERINTAH PROVINSI SUMATERA BARAT</h3>
-        <h1 style="margin-top: 0px; text-align: center;">SMK NEGERI 1 SOLOK SELATAN</h1>
+        <h1 style="margin-top: 0px; text-align: center;">SMP NEGERI 3 TANJUNG RAYA</h1>
         <hr>
-    </div> -->
+    </div>
     <h2 style="text-align: center;">Tanda Pengembalian Buku</h2>
   
     <div>

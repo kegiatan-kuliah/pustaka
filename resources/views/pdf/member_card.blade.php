@@ -57,26 +57,34 @@
 </head>
 
 <body>
+    @php
+        $photo = '/storage/'.$data->photo;
+    @endphp
     <div class="name-card">
         <table class="head">
             <tbody>
                 <tr>
                     <td>
-                        <img src="{{ public_path('assets/img/logo.png') }}" alt="logo" class="logo-img" />
+                        <img src="{{ public_path('img/logo.png') }}" alt="logo" class="logo-img" />
                     </td>
                     <td>
                         <div class="label">
-                            <strong>Kartu Anggota</strong>
-                            <p>Pustaka Digital</p>
+                            <strong>Kartu Anggota Pustaka</strong>
+                            <p>SMP N 3 Tanjung Raya</p>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
         <hr>
-        <div class="nis">NIS: {{ $data->identity_no }}</div>
-        <div class="nama">Nama: {{ $data->name }}</div>
-        <div class="kelas">Kelas: {{ $data->room->name }}</div>
+        <div style="width: 50%; float: left;">
+            <div class="nis">NIS: {{ $data->identity_no }}</div>
+            <div class="nama">Nama: {{ $data->name }}</div>
+            <div class="kelas">Kelas: {{ $data->room->name }}</div>
+        </div>
+        <div style="width: 50%; float: right;">
+            <img src="{{ public_path($photo) }}" alt="logo" width="120" />
+        </div>
     </div>
 </body>
 

@@ -79,10 +79,14 @@
                 <p>Telah mengembalikan buku-buku pinjaman dengan lengkap <strong>(BEBAS PUSTAKA)</strong>.</p>
             </div>
             <div class="signature">
-                <p>{{ Carbon::now()->translatedFormat('d F Y') }}</p>
-                <p><strong>Kepala Perpustakaan</strong></p>
-                <br><br>
-                <p>_______________________</p>
+                <p>Tanjung Raya, {{ Carbon::now()->translatedFormat('d F Y')}} </p>
+                <p style="margin-top:0px; margin-bottom: 0px;">Kepala Perpustakaan</p>
+                <p style="margin-top:0px; margin-bottom: 0px;">Sekolah</p>
+                <br>
+                <br>
+                <br>
+                <p style="margin-top:0px; margin-bottom: 0px;">Dhiawr Rahmi, S.Pd I</p>
+                <p style="margin-top:0px; margin-bottom: 0px;">NIP. 198511232022212011</p>
             </div>
         </div>
     </div>
